@@ -1,0 +1,51 @@
+﻿@model ComplaintForCinema.ComplaintJobHistory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seguimiento Queja/Reclamacion</h2>
+
+<div>
+    <h4>Detalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintJobHistoryDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintJobHistoryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complaint.ComplaintTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complaint.ComplaintTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ComplaintJobHistoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

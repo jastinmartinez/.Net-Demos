@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ComplaintForCinema.ComplaintDepartament>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Departamento</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDepartamentDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDepartamentIsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDepartamentDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDepartamentIsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ComplaintDepartamentID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ComplaintDepartamentID }) |
+            @Html.ActionLink("Elminar", "Delete", new { id=item.ComplaintDepartamentID })
+        </td>
+    </tr>
+}
+
+</table>

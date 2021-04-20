@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                @Html.ActionLink("Ciname Q&R", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("Quejas/Reclamaciones", "Index", "Complaints")</li>
+                    }
+
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Operaciones
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Quejas/Reclamaciones", "Index", "Complaints")</li>
+                                <li>@Html.ActionLink("Tipos de solicitudes", "Index", "ComplaintTypes")</li>
+                                <li>@Html.ActionLink("Asignacion de Solicitudes", "Index", "Complaint_ComplaintDepartament")</li>
+                                <li>@Html.ActionLink("Seguimiento Solicitudes", "Index", "ComplaintJobHistories")</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Mantenimiento
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Categorias", "Index", "ComplaintCategories")</li>
+                                <li>@Html.ActionLink("Productos", "Index", "ComplaintProducts")</li>
+                                <li>@Html.ActionLink("Estados", "Index", "ComplaintStatus")</li>
+                                <li>@Html.ActionLink("Departamento", "Index", "ComplaintDepartaments")</li>
+                                <li>@Html.ActionLink("Ubicaciones", "Index", "ComplaintLocations")</li>
+                                <li>@Html.ActionLink("Roles", "Index", "AspNetRoles")</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Exportar Excel
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Solicitudes", "Complaints", "Report")</li>
+                                <li>@Html.ActionLink("Solicitudes Abiertas", "OpenComplaint", "Report")</li>
+                                <li>@Html.ActionLink("Solicitudes Pendientes", "PendingComplaint", "Report")</li>
+                                <li>@Html.ActionLink("Solicitudes Cerradas", "CloseComplaint", "Report")</li>
+
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

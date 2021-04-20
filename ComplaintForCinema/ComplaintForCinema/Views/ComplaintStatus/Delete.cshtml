@@ -1,0 +1,41 @@
+﻿@model ComplaintForCinema.ComplaintStatu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Seguro desea Eliminar?</h3>
+<div>
+    <h4>Estado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintStatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintStatusDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintStatusIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintStatusIsActive)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a Listado", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,87 @@
+﻿
+@model IEnumerable<ComplaintForCinema.Models.Report>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Solicitudes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintTypeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintStatusDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintLocationDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintCommets)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintTypeDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintStatusDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintLocationDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintCommets)
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+
+<div>
+    <a href="@Url.Action("DownloadPendingComplaint","Report")">Download Excel</a>
+</div>
+

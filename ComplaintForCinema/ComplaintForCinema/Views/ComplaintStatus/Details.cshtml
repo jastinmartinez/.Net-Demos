@@ -1,0 +1,35 @@
+﻿@model ComplaintForCinema.ComplaintStatu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Estado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintStatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintStatusDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintStatusIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintStatusIsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ComplaintStatusID }) |
+    @Html.ActionLink("Volver a Listado", "Index")
+</p>

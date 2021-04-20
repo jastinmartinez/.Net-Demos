@@ -1,0 +1,20 @@
+﻿@model Lab01.Models.AdditionModel
+@using (Html.BeginForm())
+{
+    <h2> Suma de 2 numeros</h2>
+    @Html.Label("Nummero 1")
+    <br />
+    @Html.EditorFor(x => x.FirstNumber)
+    <br />
+    @Html.Label("Numero 2")
+    <br />
+    @Html.EditorFor(x => x.SecondNumber)
+    <br />
+    <br />
+    @Html.Label("Resultado")
+    <br />
+    @Html.DisplayFor(x => x.AdditionResult)
+    <br />
+    <br />
+    <input type="submit" value="Add" />
+}

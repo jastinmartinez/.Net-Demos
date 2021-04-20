@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ComplaintForCinema.ComplaintType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tipo de queja</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintTypeDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintTypeIsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintTypeDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintTypeIsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ComplaintTypeID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ComplaintTypeID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ComplaintTypeID })
+        </td>
+    </tr>
+}
+
+</table>

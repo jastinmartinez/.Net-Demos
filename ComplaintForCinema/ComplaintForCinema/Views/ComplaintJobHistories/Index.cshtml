@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ComplaintForCinema.ComplaintJobHistory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seguimiento Queja/Reclamacion</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complaint.ComplaintTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintJobHistoryDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintJobHistoryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complaint.ComplaintTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ComplaintJobHistoryID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ComplaintJobHistoryID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ComplaintJobHistoryID })
+        </td>
+    </tr>
+}
+
+</table>

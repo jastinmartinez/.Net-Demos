@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ComplaintForCinema.Complaint>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Queja/Reclamacion</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintCommets)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintLocation.ComplaintLocationDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintProduct.ComplaintProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintStatu.ComplaintStatusDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintType.ComplaintTypeDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintCommets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintLocation.ComplaintLocationDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintProduct.ComplaintProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintStatu.ComplaintStatusDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintType.ComplaintTypeDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ComplaintID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ComplaintID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ComplaintID })
+        </td>
+    </tr>
+}
+
+</table>

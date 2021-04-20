@@ -1,0 +1,97 @@
+﻿@model ComplaintForCinema.Complaint
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Queja/Reclamacion</h2>
+
+<h3>Seguro desea Eliminar?</h3>
+<div>
+    <h4>Eliminar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintCommets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintCommets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintLocation.ComplaintLocationDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintLocation.ComplaintLocationDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintProduct.ComplaintProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintProduct.ComplaintProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintStatu.ComplaintStatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintStatu.ComplaintStatusDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintType.ComplaintTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintType.ComplaintTypeDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a Listado", "Index")
+        </div>
+    }
+</div>

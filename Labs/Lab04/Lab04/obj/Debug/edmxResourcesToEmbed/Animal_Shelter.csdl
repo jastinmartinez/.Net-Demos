@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Animal_ShelterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adoption">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Species" />
+      <PropertyRef Name="Adopter_Email" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Species" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adopter_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adoption_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adoption_Fee" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Animal" Relationship="Self.FK__Adoptions__3A81B327" FromRole="Adoptions" ToRole="Animals" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Adoptions__Adopt__38996AB5" FromRole="Adoptions" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Animal">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Species" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Species" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Primary_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Implant_Chip_ID" Type="Guid" Nullable="false" />
+    <Property Name="Breed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pattern" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Admission_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Adoptions" Relationship="Self.FK__Adoptions__3A81B327" FromRole="Animals" ToRole="Adoptions" />
+    <NavigationProperty Name="Color" Relationship="Self.FK__Animals__Primary__2A4B4B5E" FromRole="Animals" ToRole="Colors" />
+    <NavigationProperty Name="Species1" Relationship="Self.FK__Animals__Species__29572725" FromRole="Animals" ToRole="Species" />
+    <NavigationProperty Name="Vaccinations" Relationship="Self.FK__Vaccinations__3E52440B" FromRole="Animals" ToRole="Vaccinations" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birth_Date" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Zip_Code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Adoptions" Relationship="Self.FK__Adoptions__Adopt__38996AB5" FromRole="Persons" ToRole="Adoptions" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Email__300424B4" FromRole="Persons" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Hire_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Staff__Email__300424B4" FromRole="Staff" ToRole="Persons" />
+    <NavigationProperty Name="Staff_Assignments" Relationship="Self.FK__Staff_Ass__Email__34C8D9D1" FromRole="Staff" ToRole="Staff_Assignments" />
+    <NavigationProperty Name="Vaccinations" Relationship="Self.FK__Vaccinati__Email__3D5E1FD2" FromRole="Staff" ToRole="Vaccinations" />
+  </EntityType>
+  <EntityType Name="Staff_Assignments">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Assigned" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__Staff_Ass__Email__34C8D9D1" FromRole="Staff_Assignments" ToRole="Staff" />
+    <NavigationProperty Name="Staff_Roles" Relationship="Self.FK__Staff_Assi__Role__35BCFE0A" FromRole="Staff_Assignments" ToRole="Staff_Roles" />
+  </EntityType>
+  <EntityType Name="Staff_Roles">
+    <Key>
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Staff_Assignments" Relationship="Self.FK__Staff_Assi__Role__35BCFE0A" FromRole="Staff_Roles" ToRole="Staff_Assignments" />
+  </EntityType>
+  <EntityType Name="Vaccination">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Species" />
+      <PropertyRef Name="Vaccination_Time" />
+      <PropertyRef Name="Vaccine" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Species" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vaccination_Time" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Vaccine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Batch" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Animal" Relationship="Self.FK__Vaccinations__3E52440B" FromRole="Vaccinations" ToRole="Animals" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__Vaccinati__Email__3D5E1FD2" FromRole="Vaccinations" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="Color1" />
+    </Key>
+    <Property Name="Color1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Animals" Relationship="Self.FK__Animals__Primary__2A4B4B5E" FromRole="Colors" ToRole="Animals" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="Species1" />
+    </Key>
+    <Property Name="Species1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Animals" Relationship="Self.FK__Animals__Species__29572725" FromRole="Species" ToRole="Animals" />
+  </EntityType>
+  <Association Name="FK__Adoptions__3A81B327">
+    <End Role="Animals" Type="Self.Animal" Multiplicity="1" />
+    <End Role="Adoptions" Type="Self.Adoption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Animals">
+        <PropertyRef Name="Name" />
+        <PropertyRef Name="Species" />
+      </Principal>
+      <Dependent Role="Adoptions">
+        <PropertyRef Name="Name" />
+        <PropertyRef Name="Species" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Adoptions__Adopt__38996AB5">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="Adoptions" Type="Self.Adoption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Adoptions">
+        <PropertyRef Name="Adopter_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Animals__Primary__2A4B4B5E">
+    <End Role="Colors" Type="Self.Color" Multiplicity="1" />
+    <End Role="Animals" Type="Self.Animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colors">
+        <PropertyRef Name="Color1" />
+      </Principal>
+      <Dependent Role="Animals">
+        <PropertyRef Name="Primary_Color" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Animals__Species__29572725">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="Animals" Type="Self.Animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="Species1" />
+      </Principal>
+      <Dependent Role="Animals">
+        <PropertyRef Name="Species" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vaccinations__3E52440B">
+    <End Role="Animals" Type="Self.Animal" Multiplicity="1" />
+    <End Role="Vaccinations" Type="Self.Vaccination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Animals">
+        <PropertyRef Name="Name" />
+        <PropertyRef Name="Species" />
+      </Principal>
+      <Dependent Role="Vaccinations">
+        <PropertyRef Name="Name" />
+        <PropertyRef Name="Species" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff__Email__300424B4">
+    <End Role="Persons" Type="Self.Person" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff_Ass__Email__34C8D9D1">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Staff_Assignments" Type="Self.Staff_Assignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Staff_Assignments">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vaccinati__Email__3D5E1FD2">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Vaccinations" Type="Self.Vaccination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Vaccinations">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff_Assi__Role__35BCFE0A">
+    <End Role="Staff_Roles" Type="Self.Staff_Roles" Multiplicity="1" />
+    <End Role="Staff_Assignments" Type="Self.Staff_Assignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff_Roles">
+        <PropertyRef Name="Role" />
+      </Principal>
+      <Dependent Role="Staff_Assignments">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Animal_ShelterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adoptions" EntityType="Self.Adoption" />
+    <EntitySet Name="Animals" EntityType="Self.Animal" />
+    <EntitySet Name="Persons" EntityType="Self.Person" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="Staff_Assignments" EntityType="Self.Staff_Assignments" />
+    <EntitySet Name="Staff_Roles" EntityType="Self.Staff_Roles" />
+    <EntitySet Name="Vaccinations" EntityType="Self.Vaccination" />
+    <EntitySet Name="Colors" EntityType="Self.Color" />
+    <EntitySet Name="Species" EntityType="Self.Species" />
+    <AssociationSet Name="FK__Adoptions__3A81B327" Association="Self.FK__Adoptions__3A81B327">
+      <End Role="Animals" EntitySet="Animals" />
+      <End Role="Adoptions" EntitySet="Adoptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Adoptions__Adopt__38996AB5" Association="Self.FK__Adoptions__Adopt__38996AB5">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Adoptions" EntitySet="Adoptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Animals__Primary__2A4B4B5E" Association="Self.FK__Animals__Primary__2A4B4B5E">
+      <End Role="Colors" EntitySet="Colors" />
+      <End Role="Animals" EntitySet="Animals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Animals__Species__29572725" Association="Self.FK__Animals__Species__29572725">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Animals" EntitySet="Animals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vaccinations__3E52440B" Association="Self.FK__Vaccinations__3E52440B">
+      <End Role="Animals" EntitySet="Animals" />
+      <End Role="Vaccinations" EntitySet="Vaccinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff__Email__300424B4" Association="Self.FK__Staff__Email__300424B4">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff_Ass__Email__34C8D9D1" Association="Self.FK__Staff_Ass__Email__34C8D9D1">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Staff_Assignments" EntitySet="Staff_Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vaccinati__Email__3D5E1FD2" Association="Self.FK__Vaccinati__Email__3D5E1FD2">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Vaccinations" EntitySet="Vaccinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff_Assi__Role__35BCFE0A" Association="Self.FK__Staff_Assi__Role__35BCFE0A">
+      <End Role="Staff_Roles" EntitySet="Staff_Roles" />
+      <End Role="Staff_Assignments" EntitySet="Staff_Assignments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

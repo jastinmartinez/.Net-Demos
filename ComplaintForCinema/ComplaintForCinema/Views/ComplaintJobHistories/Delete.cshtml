@@ -1,0 +1,57 @@
+﻿@model ComplaintForCinema.ComplaintJobHistory
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seguimiento Queja/Reclamacion</h2>
+
+<h3>seguro desea eliminar?</h3>
+<div>
+    <h4>Eliminar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintJobHistoryDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintJobHistoryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintJobHistoryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complaint.ComplaintTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complaint.ComplaintTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

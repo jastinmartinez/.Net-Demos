@@ -1,0 +1,35 @@
+﻿@model ComplaintForCinema.ComplaintLocation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ComplaintLocation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintLocationDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintLocationDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintLocationIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintLocationIsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ComplaintLocationID }) |
+    @Html.ActionLink("Volver a Listado", "Index")
+</p>

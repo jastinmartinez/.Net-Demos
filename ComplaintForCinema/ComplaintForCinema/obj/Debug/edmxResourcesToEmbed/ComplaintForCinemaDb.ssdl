@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComplaintCinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Complaint">
+    <Key>
+      <PropertyRef Name="ComplaintID" />
+    </Key>
+    <Property Name="ComplaintID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintTitle" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ComplaintDescription" Type="varchar" MaxLength="100" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ComplaintProductID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintDate" Type="date" Nullable="false" />
+    <Property Name="ComplaintStatusID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintLocationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintCommets" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Complaint_ComplaintDepartament">
+    <Key>
+      <PropertyRef Name="Complaint_ComplaintDepartamentID" />
+    </Key>
+    <Property Name="Complaint_ComplaintDepartamentID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintDepartamentID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintCategory">
+    <Key>
+      <PropertyRef Name="ComplaintCategoryID" />
+    </Key>
+    <Property Name="ComplaintCategoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintCategoryDescription" Type="varchar" MaxLength="100" />
+    <Property Name="ComplaintCategoryIsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ComplaintDepartament">
+    <Key>
+      <PropertyRef Name="ComplaintDepartamentID" />
+    </Key>
+    <Property Name="ComplaintDepartamentID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintDepartamentDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ComplaintDepartamentIsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintJobHistory">
+    <Key>
+      <PropertyRef Name="ComplaintJobHistoryID" />
+    </Key>
+    <Property Name="ComplaintJobHistoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintJobHistoryDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ComplaintJobHistoryDate" Type="date" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintLocation">
+    <Key>
+      <PropertyRef Name="ComplaintLocationID" />
+    </Key>
+    <Property Name="ComplaintLocationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintLocationDescription" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ComplaintLocationIsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintProduct">
+    <Key>
+      <PropertyRef Name="ComplaintProductID" />
+    </Key>
+    <Property Name="ComplaintProductID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ComplaintCategoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintProductIsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintStatus">
+    <Key>
+      <PropertyRef Name="ComplaintStatusID" />
+    </Key>
+    <Property Name="ComplaintStatusID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintStatusDescription" Type="varchar" MaxLength="100" />
+    <Property Name="ComplaintStatusIsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ComplaintType">
+    <Key>
+      <PropertyRef Name="ComplaintTypeID" />
+    </Key>
+    <Property Name="ComplaintTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintTypeDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ComplaintTypeIsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComplaintUserHistory">
+    <Key>
+      <PropertyRef Name="ComplaintUserHistoryID" />
+    </Key>
+    <Property Name="ComplaintUserHistoryID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ComplaintUserHistoryDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ComplaintJobHistoryDate" Type="date" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="Complaint_FK">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComplaintJobHistory_FK">
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="1" />
+    <End Role="ComplaintJobHistory" Type="Self.ComplaintJobHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complaint">
+        <PropertyRef Name="ComplaintID" />
+      </Principal>
+      <Dependent Role="ComplaintJobHistory">
+        <PropertyRef Name="ComplaintID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaint_ComplaintDepartament_Complaint">
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="1" />
+    <End Role="Complaint_ComplaintDepartament" Type="Self.Complaint_ComplaintDepartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complaint">
+        <PropertyRef Name="ComplaintID" />
+      </Principal>
+      <Dependent Role="Complaint_ComplaintDepartament">
+        <PropertyRef Name="ComplaintID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaint_ComplaintDepartament_ComplaintDepartament">
+    <End Role="ComplaintDepartament" Type="Self.ComplaintDepartament" Multiplicity="1" />
+    <End Role="Complaint_ComplaintDepartament" Type="Self.Complaint_ComplaintDepartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintDepartament">
+        <PropertyRef Name="ComplaintDepartamentID" />
+      </Principal>
+      <Dependent Role="Complaint_ComplaintDepartament">
+        <PropertyRef Name="ComplaintDepartamentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_complaint_complaintlocation">
+    <End Role="ComplaintLocation" Type="Self.ComplaintLocation" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintLocation">
+        <PropertyRef Name="ComplaintLocationID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="ComplaintLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaint_ComplaintProduct">
+    <End Role="ComplaintProduct" Type="Self.ComplaintProduct" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintProduct">
+        <PropertyRef Name="ComplaintProductID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="ComplaintProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_complaint_complaintstatus">
+    <End Role="ComplaintStatus" Type="Self.ComplaintStatus" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintStatus">
+        <PropertyRef Name="ComplaintStatusID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="ComplaintStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaint_ComplaintType">
+    <End Role="ComplaintType" Type="Self.ComplaintType" Multiplicity="1" />
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintType">
+        <PropertyRef Name="ComplaintTypeID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="ComplaintTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintJobHistory_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="ComplaintJobHistory" Type="Self.ComplaintJobHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComplaintJobHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintProduct_ComplaintCategory">
+    <End Role="ComplaintCategory" Type="Self.ComplaintCategory" Multiplicity="1" />
+    <End Role="ComplaintProduct" Type="Self.ComplaintProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComplaintCategory">
+        <PropertyRef Name="ComplaintCategoryID" />
+      </Principal>
+      <Dependent Role="ComplaintProduct">
+        <PropertyRef Name="ComplaintCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintUserHistory_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="ComplaintUserHistory" Type="Self.ComplaintUserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComplaintUserHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintUserHistory_Complaint">
+    <End Role="Complaint" Type="Self.Complaint" Multiplicity="1" />
+    <End Role="ComplaintUserHistory" Type="Self.ComplaintUserHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complaint">
+        <PropertyRef Name="ComplaintID" />
+      </Principal>
+      <Dependent Role="ComplaintUserHistory">
+        <PropertyRef Name="ComplaintID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ComplaintCinemaModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complaint_ComplaintDepartament" EntityType="Self.Complaint_ComplaintDepartament" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintCategory" EntityType="Self.ComplaintCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintDepartament" EntityType="Self.ComplaintDepartament" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintJobHistory" EntityType="Self.ComplaintJobHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintLocation" EntityType="Self.ComplaintLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintProduct" EntityType="Self.ComplaintProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintStatus" EntityType="Self.ComplaintStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintType" EntityType="Self.ComplaintType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplaintUserHistory" EntityType="Self.ComplaintUserHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Complaint_FK" Association="Self.Complaint_FK">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="ComplaintJobHistory_FK" Association="Self.ComplaintJobHistory_FK">
+      <End Role="Complaint" EntitySet="Complaint" />
+      <End Role="ComplaintJobHistory" EntitySet="ComplaintJobHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaint_ComplaintDepartament_Complaint" Association="Self.FK_Complaint_ComplaintDepartament_Complaint">
+      <End Role="Complaint" EntitySet="Complaint" />
+      <End Role="Complaint_ComplaintDepartament" EntitySet="Complaint_ComplaintDepartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaint_ComplaintDepartament_ComplaintDepartament" Association="Self.FK_Complaint_ComplaintDepartament_ComplaintDepartament">
+      <End Role="ComplaintDepartament" EntitySet="ComplaintDepartament" />
+      <End Role="Complaint_ComplaintDepartament" EntitySet="Complaint_ComplaintDepartament" />
+    </AssociationSet>
+    <AssociationSet Name="fk_complaint_complaintlocation" Association="Self.fk_complaint_complaintlocation">
+      <End Role="ComplaintLocation" EntitySet="ComplaintLocation" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaint_ComplaintProduct" Association="Self.FK_Complaint_ComplaintProduct">
+      <End Role="ComplaintProduct" EntitySet="ComplaintProduct" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="fk_complaint_complaintstatus" Association="Self.fk_complaint_complaintstatus">
+      <End Role="ComplaintStatus" EntitySet="ComplaintStatus" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaint_ComplaintType" Association="Self.FK_Complaint_ComplaintType">
+      <End Role="ComplaintType" EntitySet="ComplaintType" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintJobHistory_AspNetUsers" Association="Self.FK_ComplaintJobHistory_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ComplaintJobHistory" EntitySet="ComplaintJobHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintProduct_ComplaintCategory" Association="Self.FK_ComplaintProduct_ComplaintCategory">
+      <End Role="ComplaintCategory" EntitySet="ComplaintCategory" />
+      <End Role="ComplaintProduct" EntitySet="ComplaintProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintUserHistory_AspNetUsers" Association="Self.FK_ComplaintUserHistory_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ComplaintUserHistory" EntitySet="ComplaintUserHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintUserHistory_Complaint" Association="Self.FK_ComplaintUserHistory_Complaint">
+      <End Role="Complaint" EntitySet="Complaint" />
+      <End Role="ComplaintUserHistory" EntitySet="ComplaintUserHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

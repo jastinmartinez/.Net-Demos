@@ -1,0 +1,41 @@
+﻿@model ComplaintForCinema.ComplaintType
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Seguro desea Eliminar?</h3>
+<div>
+    <h4>Tipo de Queja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintTypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintTypeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintTypeIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintTypeIsActive)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a Listado", "Index")
+        </div>
+    }
+</div>

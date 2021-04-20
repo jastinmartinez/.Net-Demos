@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Animal_ShelterModelStoreContainer" CdmEntityContainer="Animal_ShelterEntities">
+    <EntitySetMapping Name="Adoptions">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Adoption">
+        <MappingFragment StoreEntitySet="Adoptions">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Species" ColumnName="Species" />
+          <ScalarProperty Name="Adopter_Email" ColumnName="Adopter_Email" />
+          <ScalarProperty Name="Adoption_Date" ColumnName="Adoption_Date" />
+          <ScalarProperty Name="Adoption_Fee" ColumnName="Adoption_Fee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Animals">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Animal">
+        <MappingFragment StoreEntitySet="Animals">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Species" ColumnName="Species" />
+          <ScalarProperty Name="Primary_Color" ColumnName="Primary_Color" />
+          <ScalarProperty Name="Implant_Chip_ID" ColumnName="Implant_Chip_ID" />
+          <ScalarProperty Name="Breed" ColumnName="Breed" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+          <ScalarProperty Name="Pattern" ColumnName="Pattern" />
+          <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Zip_Code" ColumnName="Zip_Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Hire_Date" ColumnName="Hire_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff_Assignments">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Staff_Assignments">
+        <MappingFragment StoreEntitySet="Staff_Assignments">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff_Roles">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Staff_Roles">
+        <MappingFragment StoreEntitySet="Staff_Roles">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vaccinations">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Vaccination">
+        <MappingFragment StoreEntitySet="Vaccinations">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Species" ColumnName="Species" />
+          <ScalarProperty Name="Vaccination_Time" ColumnName="Vaccination_Time" />
+          <ScalarProperty Name="Vaccine" ColumnName="Vaccine" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Color">
+        <MappingFragment StoreEntitySet="Colors">
+          <ScalarProperty Name="Color1" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Species">
+      <EntityTypeMapping TypeName="Animal_ShelterModel.Species">
+        <MappingFragment StoreEntitySet="Species">
+          <ScalarProperty Name="Species1" ColumnName="Species" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
