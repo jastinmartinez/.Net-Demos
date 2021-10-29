@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CXP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+                @if (User.IsInRole("Manager"))
+                {
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Concepto De Pago", "Index", "PayConcept")</li>
+                    <li>@Html.ActionLink("Proveedor", "Index", "Provider")</li>
+                    <li>@Html.ActionLink("Entrada De Factura", "Index", "InputDocument")</li>
+                    <li>@Html.ActionLink("Estado Entrada De Factura", "Index", "InputDocumentState")</li>
+                    <li>@Html.ActionLink("Asiento Contable", "Index", "AccountingSeat")</li>
+                </ul>
+                }
+               @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

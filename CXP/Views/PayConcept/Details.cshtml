@@ -1,0 +1,35 @@
+﻿@model CXP.Models.PayConcept
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Concepto De Pago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PayConceptDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayConceptDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayConceptState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayConceptState)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.PayConceptID }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

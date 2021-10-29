@@ -1,0 +1,73 @@
+﻿@model CXP.Models.InputDocument
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InputDocument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentInvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentInvoiceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentProviderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentProviderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentStateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentStateID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

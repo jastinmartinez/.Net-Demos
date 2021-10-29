@@ -1,0 +1,70 @@
+﻿@model CXP.Models.Provider
+@using CXP.Models
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderPersonType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderPersonType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderRNC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderRNC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderState)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+        
+        @Html.Raw(TempData["msg"])
+    }
+
+</div>

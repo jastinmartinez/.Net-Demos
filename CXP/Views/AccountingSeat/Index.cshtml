@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CXP.Models.AccountingSeat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Asiento Contable</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountSeatDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountSeatDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountSeatDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountSeatDate)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.AccountSeatID }) 
+            </td>
+        </tr>
+    }
+
+</table>
