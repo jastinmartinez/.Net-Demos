@@ -1,0 +1,92 @@
+﻿@model IEnumerable<CXP.Models.InputDocument>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Documento De Entrada</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentProviderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentPayConceptID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentStateID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InputDocumentAccountSeatID)
+        </th>
+        <th>
+            @Html.ActionLink("Nuevo", "Create")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InputDocumentInvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InputDocumentInvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InputDocumentAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InputDocumentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GetProvider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GetPayConcept)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GetInputDocumentState)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.InputDocumentAccountSeatID)
+            </th>
+
+            @if (item.InputDocumentAccountSeatID is null)
+            {
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.InputDocumentID }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.InputDocumentID })|
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.InputDocumentID })
+                </td>
+            }
+
+            @if (item.InputDocumentAccountSeatID != null)
+            {
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = item.InputDocumentID })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

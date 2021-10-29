@@ -1,0 +1,59 @@
+﻿@model CXP.Models.Provider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderPersonType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetPersonType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderRNC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderRNC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderState)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProviderID }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

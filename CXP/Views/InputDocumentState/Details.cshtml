@@ -1,0 +1,27 @@
+﻿@model CXP.Models.InputDocumentState
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Estado Documento De Entrada </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.InputDocumentStateID }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

@@ -1,0 +1,79 @@
+﻿@model CXP.Models.InputDocument
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InputDocument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentInvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentInvoiceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentInvoiceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InputDocumentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentProviderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetProvider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InputDocumentStateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GetInputDocumentState)
+        </dd>
+
+    </dl>
+</div>
+
+@if (Model.InputDocumentAccountSeatID is null)
+{
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.InputDocumentID }) |
+        @Html.ActionLink("Volver", "Index")
+    </p>
+}
+
+@if (Model.InputDocumentAccountSeatID != null)
+{
+    <td>
+        @Html.ActionLink("Volver", "Index")
+    </td>
+}
+
